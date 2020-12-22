@@ -1,0 +1,113 @@
+<div class="page-header">
+    <h1> Блокнот с любимыми песнями =) </h1>
+</div>
+
+<div class="panel">
+    <div class="form-inline">
+        <div class="form-group">
+            <div class="col-md-1">
+                <label>Добавить исполнителя</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6">
+                <input type="form-control" class="form-control" [(ngModel)]="artistName" placeholder="Исполнитель" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6">
+                <input type="form-control" class="form-control" [(ngModel)]="artistCountry" placeholder="Страна" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-8">
+                <button class="btn btn-default" (click)="addArtist(artistName, artistCountry)">Добавить</button>
+            </div>
+        </div>
+    </div>
+    <hr/>
+
+    <!--Artists-->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Имя артиста</th>
+                <th>Страна</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let artist of artists">
+                <td>{{artist.name}}</td>
+                <td>{{artist.country}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr/>
+
+    <!--Summary-->
+    <div class="form-inline">
+        <div class="form-group">
+            <div class="col-md-1">
+                <label>Добавить песню</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6">
+                <select class="form-control" [(ngModel)]="artistName" name="Исполнитель" #Origin>
+                    <option *ngFor="let artist of artists" value="{{artist.name}}">{{artist.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6">
+                <input type="form-control" class="form-control" [(ngModel)]="songName" placeholder="Название песни" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6">
+                <input type="form-control" class="form-control" [(ngModel)]="songGenre" placeholder="Жанр" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-8">
+                <button class="btn btn-default" (click)="addSong(artistName, songName, songGenre)">Добавить</button>
+            </div>
+        </div>
+    </div>
+    <h1>Общий список песен</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Название песни</th>
+                <th>Имя артиста</th>
+                <th>Жанр</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let summary of summaries">
+                <td>{{summary.song.name}}</td>
+                <td>{{summary.artist.name}}</td>
+                <td>{{summary.song.genre}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr/>
+
+    <!--Songs-->
+    <h1>Список песен по жанрам</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Название песни</th>
+                <th>Жанр</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let song of songs">
+                <td>{{song.name}}</td>
+                <td>{{song.genre}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr/>
+</div> 
